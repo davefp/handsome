@@ -2,49 +2,11 @@
   <head>
     <title>Hello React</title>
     <script src="http://fb.me/react-0.12.2.js"></script>
-    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="assets/widgets.js"></script>
   </head>
   <body>
     <div id="content"></div>
-    <script type="text/jsx">
-    var TextWidget = React.createClass({
-      updateWidget: function() {
-        $.ajax({
-          url: 'widgets/' + this.props.name + '.json',
-          dataType: 'json',
-          success: function(data) {
-            this.setState(data);
-          }.bind(this),
-          error: function(xhr, status, err) {
-            console.error(this.props.url, status, err.toString());
-          }.bind(this)
-        });
-      },
-      getInitialState: function() {
-        return {title: "init", text: "init"};
-      },
-      componentDidMount: function() {
-        this.updateWidget();
-        setInterval(this.updateWidget, this.props.pollInterval);
-      },
-      render: function() {
-        return (
-          <div className="helloWorld widget">
-            <h1>{this.props.title}</h1>
-            <h2>{this.state.text}</h2>
-          </div>
-        );
-      }
-      });
-
-      React.render(
-        <div>
-          <TextWidget name="hello" title="Hello" pollInterval={1000} />
-          <TextWidget name="number" title="Number" pollInterval={1000} />
-        </div>,
-        document.getElementById('content')
-      );
-    </script>
+    <script src="assets/<%= dashboard %>.js"></script>
   </body>
 </html>

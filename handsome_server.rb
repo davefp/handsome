@@ -2,9 +2,14 @@ require 'json'
 
 class HandsomeServer < Sinatra::Base
 
-  # get the dashboard
+  # redirect to default dashboard
   get '/' do
-    erb :index
+    redirect '/default'
+  end
+
+  # get the dashboard
+  get '/:dashboard' do
+    erb :index, locals: {dashboard: params[:dashboard]}
   end
 
   # get the latest data for the given widget
