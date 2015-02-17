@@ -1,5 +1,3 @@
-require 'json'
-
 class HandsomeServer < Sinatra::Base
 
   # redirect to default dashboard
