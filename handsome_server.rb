@@ -21,7 +21,7 @@ class HandsomeServer < Sinatra::Base
     if data
       next_time = data.delete("next_time")
       now = Time.now
-      updates_in_millis = ((Time.parse(next_time) - now) * 1000).to_i
+      updates_in_millis = ((Time.parse(next_time) - now + 1) * 1000).to_i
       data[:updates_in_millis] = updates_in_millis > 0 ? updates_in_millis : 0
       JSON.generate(data)
     else

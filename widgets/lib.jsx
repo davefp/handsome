@@ -22,7 +22,6 @@ var PollingWidget = {
     if(this.timeout_id) {
       clearTimeout(this.timeout_id)
       this.timeout_id = null;
-      console.log("timeout cleared!")
     }
     if(interval < 1000) { interval = 1000; }
     this.timeout_id = setTimeout(this.updateWidget, interval)

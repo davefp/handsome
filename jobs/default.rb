@@ -1,6 +1,7 @@
-SCHEDULER.every '5s' do |job|
-  data = {text: ["world","galaxy","universe"].sample}
+widget_job('hello', '5s') do
+  {text: ["world","galaxy","universe"].sample}
+end
 
-  update_widget("hello", data, job.next_time)
-  update_widget("number", {text: (1..10).to_a.sample}, job.next_time)
+widget_job('number', '5s') do
+  {text: (1..10).to_a.sample}
 end
