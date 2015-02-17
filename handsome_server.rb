@@ -17,9 +17,13 @@ class HandsomeServer < Sinatra::Base
     redis = Redis.new
 
     key = params[:widget]
-    data = redis.get(key)
+    data = JSON.parse(redis.get(key))
     if data
-      data
+      next_time = data.delete("next_time")
+      now = Time.now
+      updates_in_millis = ((Time.parse(next_time) - now) * 1000).to_i
+      data[:updates_in_millis] = updates_in_millis > 0 ? updates_in_millis : 0
+      JSON.generate(data)
     else
       render_error(key)
     end
