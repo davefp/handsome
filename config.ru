@@ -3,6 +3,7 @@ require 'bundler'
 
 Bundler.require
 
+require './handsome_jobs'
 require './handsome_server'
 require './handsome_assets'
 
