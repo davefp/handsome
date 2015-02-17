@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <script type="text/jsx">
+    var HelloWorldWidget = React.createClass({
+      updateWidget: function() {
+        $.ajax({
+          url: this.props.url,
+          dataType: 'json',
+          success: function(data) {
+            this.setState(data);
+          }.bind(this),
+          error: function(xhr, status, err) {
+            console.error(this.props.url, status, err.toString());
+          }.bind(this)
+        });
+      },
+      getInitialState: function() {
+        return {hello: "init"};
+      },
+      componentDidMount: function() {
+        this.updateWidget();
+        setInterval(this.updateWidget, this.props.pollInterval);
+      },
+      render: function() {
+        return (
+          <div className="helloWorld widget">
+            <h1>Hello:</h1>
+            <h2>{this.state.hello}</h2>
+          </div>
+        );
+      }
+      });
+
+      React.render(
+        <HelloWorldWidget url="widgets/hello.json" pollInterval={1000} />,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
