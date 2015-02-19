@@ -63,7 +63,7 @@ React.render(
 
 Now you can populate the dashboard with widgets by simply adding the appropriate React components as children of the existing div.
 
-Each widget needs a `name` so that it knows where to call for updates, and a `pollInterval` to tell it how often to check for updates. Each widget type also has its own properties. The text widget, for example, can takes a 'title' property.
+Each widget needs a `name` so that it knows where to call for updates. Each widget type can also have its own properties. The text widget, for example, takes a 'title' property.
 
 Add a text widget to your dashboard:
 
@@ -72,7 +72,7 @@ Add a text widget to your dashboard:
 
 React.render(
   <div>
-    <TextWidget name="time" title="The Time" pollInterval={1000} />
+    <TextWidget name="reddit_headline" title="Top Reddit Headline" />
   </div>,
   document.getElementById('content')
 );
@@ -88,14 +88,46 @@ Create a new job file:
 
 `$ touch jobs/my_job.rb`
 
-Handsome uses rufus-scheduler to do job scheduling, so your job code should be wrapped in a schedule block like this:
+Handsome provides a helper for creating periodic jobs called `recurring_job`. It takes the name of the widget you want to update, the frequency of the job, and a block that returns a hash of data to pass to the widget.
+
+Here's an example to go with our new widget above that fetches the title of the top Reddit post every minute:
 
 ```
-# jobs/my_job.rb
-SCHEDULER.every '1s' do
-  # Job code goes here!
+recurring_job('reddit_headline', '1m') do
+  listing = JSON.parse(Net::HTTP.get(URI('https://www.reddit.com/r/all.json?limit=1')))
+  title = listing['data']['children'][0]['data']['title']
+  {text: title}
 end
 ```
+
+# Making Custom Widgets
+
+Create a JSX file for your widget:
+
+`touch widgets/my_widget.jsx`
+
+It should be a [React](https://facebook.github.io/react/) component that includes the `PollingWidget` mixin:
+
+```
+var MyWidget = React.createClass({
+  mixins: [PollingWidget],
+
+  getInitialState: function() {
+    return {title: "init", text: "init"};
+  },
+
+  render: function() {
+    return (
+      <div className="textWidget widget">
+        <h1>{this.props.title}</h1>
+        <h2>{this.state.text}</h2>
+      </div>
+    );
+  }
+});
+```
+
+At a bare minimum it should also implement the `render` and `getInitialState` methods so that it can be drawn and have some default data to be shown while waiting for the server.
 
 ## How does Handsome differ from Dashing?
 

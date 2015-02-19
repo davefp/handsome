@@ -5,8 +5,8 @@ def update_widget(name, data, next_time)
   redis.set(name, JSON.generate({payload: data, next_time: next_time}))
 end
 
-def widget_job(name, interval, &block)
-  SCHEDULER.every(interval) do |job|
+def recurring_job(name, interval, &block)
+  SCHEDULER.every(interval, first: :now) do |job|
     data = yield
     update_widget(name, data, job.next_time)
   end

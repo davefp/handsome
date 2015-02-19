@@ -1,7 +1,8 @@
 React.render(
   <div>
-    <TextWidget name="hello" title="Hello" pollInterval={1000} />
-    <TextWidget name="number" title="Number" pollInterval={1000} />
+    <TextWidget name="hello" title="Hello" />
+    <TextWidget name="number" title="Number" />
+    <TextWidget name="reddit_headline" title="Top Reddit Post" />
   </div>,
   document.getElementById('content')
 );
