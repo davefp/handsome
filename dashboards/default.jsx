@@ -1,6 +1,5 @@
 React.render(
   <div id="dashboard">
-    <div className="grid-sizer"></div>
     <TextWidget name="hello" title="Hello" />
     <TextWidget name="number" title="Number" />
     <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />

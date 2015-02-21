@@ -15,16 +15,12 @@ body {
   padding: 10px;
 }
 
-.grid-sizer,
 .widget {
   width: $widget_width - $widget_padding*2;
-}
-
-.widget {
   height: $widget_height - $widget_padding*2;
+  padding: $widget_padding;
   background-color: #113F8C;
   color: #FFFFFF;
-  padding: $widget_padding;
 }
 
 @for $i from 1 through 4 {
