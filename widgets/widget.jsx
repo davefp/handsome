@@ -1,6 +1,13 @@
-var PollingWidget = {
+var Widget = {
 
   timeout_id: null,
+
+  getDefaultProps: function() {
+    return {
+      width: 1,
+      height: 1
+    };
+  },
 
   updateWidget: function() {
     $.ajax({

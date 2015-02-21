@@ -1,8 +1,19 @@
 React.render(
-  <div>
+  <div id="dashboard">
+    <div className="grid-sizer"></div>
     <TextWidget name="hello" title="Hello" />
     <TextWidget name="number" title="Number" />
-    <TextWidget name="reddit_headline" title="Top Reddit Post" />
+    <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />
+    <TextWidget name="number" title="Number" />
+    <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />
+    <TextWidget name="hello" title="Hello" />
+    <TextWidget name="number" title="Number" />
+    <TextWidget name="hello" title="Hello" />
   </div>,
   document.getElementById('content')
 );
+
+$("#dashboard").packery({
+  itemSelector: ".widget",
+  gutter: 10
+});

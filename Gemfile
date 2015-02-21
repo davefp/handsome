@@ -7,4 +7,6 @@ gem 'react-jsx-sprockets'
 gem 'redis'
 gem 'rufus-scheduler'
 
+gem 'sass'
+
 gem 'foreman'

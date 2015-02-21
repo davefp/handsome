@@ -8,6 +8,7 @@ module HandsomeAssets
     environment = Sprockets::Environment.new root_path
     environment.append_path 'widgets'
     environment.append_path 'dashboards'
+    environment.append_path 'styles'
     environment
   end
 end
