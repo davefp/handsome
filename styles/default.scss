@@ -3,7 +3,7 @@ $widget_height: 300px;
 $widget_padding: 21px;
 $gutter: 10px;
 
-$color_1: #113F8C;
+$color_1: #00A1CB;
 $color_2: #61AE24;
 $color_3: #D70060;
 $color_4: #F18D05;
@@ -26,9 +26,23 @@ body {
   height: $widget_height - $widget_padding*2;
   padding: $widget_padding;
   background-color: $color_1;
-  color: rgba(255, 255, 255, 0.8);
+  color: #FFF;
+  h1 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
+  }
 }
 
+.number_widget {
+  background-color: $color_4;
+  .number {
+    font-size: 600%;
+  }
+}
+
+.image_widget {
+  background-color: #444;
+}
 @for $i from 1 through 4 {
   .w#{$i} {
     width: ($widget_width * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);

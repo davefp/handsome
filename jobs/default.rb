@@ -1,7 +1,6 @@
-recurring_job('hello', '5s') do
-  {text: ["world","galaxy","universe"].sample}
-end
-
-recurring_job('number', '5s') do
-  {text: (1..10).to_a.sample}
+recurring_job('5s') do
+  {
+    hello: {text: ["world","galaxy","universe"].sample},
+    number: {number: (1..1000).to_a.sample}
+  }
 end
