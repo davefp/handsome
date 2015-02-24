@@ -7,10 +7,9 @@ require './handsome_jobs'
 require './handsome_server'
 require './handsome_assets'
 
-unless ENV['RACK_ENV'] == 'production'
-  map '/assets' do
-    run HandsomeAssets.environment HandsomeServer.settings.root
-  end
+map '/assets' do
+  run HandsomeAssets.environment HandsomeServer.settings.root
 end
+
 
 run HandsomeServer
