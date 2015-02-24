@@ -1,5 +1,5 @@
 var ImageWidget = React.createClass({
-  mixins: [Widget],
+  // mixins: [Widget],
 
   getInitialState: function() {
     return { image_url: "http://placekitten.com/g/208/258"};

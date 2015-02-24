@@ -14,10 +14,12 @@ class HandsomeServer < Sinatra::Base
   get '/widgets/:widget.json' do
     content_type :json
 
-    redis = Redis.new
+    redis = Redis.new(url: ENV["REDISTOGO_URL"] || "redis://localhost:6379")
 
     key = params[:widget]
     data = JSON.parse(redis.get(key) || "{}")
+    redis.quit
+    
     if !data.empty?
       next_time = data.delete("next_time")
       now = Time.now
@@ -27,6 +29,7 @@ class HandsomeServer < Sinatra::Base
     else
       render_error(key)
     end
+    
   end
 
   private
