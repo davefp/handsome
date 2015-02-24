@@ -1,7 +1,7 @@
 SCHEDULER = Rufus::Scheduler.new
 
 def update_widget(name, data, next_time)
-  redis = Redis.new
+  redis = Redis.new(url: ENV["REDISTOGO_URL"] || "redis://localhost:6379")
   redis.set(name, JSON.generate({payload: data, next_time: next_time}))
 end
 
