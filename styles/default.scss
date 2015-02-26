@@ -3,6 +3,8 @@ $widget_height: 300px;
 $widget_padding: 21px;
 $gutter: 10px;
 
+$max_columns: 4;
+
 $color_1: #00A1CB;
 $color_2: #61AE24;
 $color_3: #D70060;
@@ -12,13 +14,13 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+  background-color: #616161;
 }
 
 #dashboard {
-  background-color: #616161;
-  width: 100%;
-  height: 1024px;
-  padding: 10px;
+  max-width: $max_columns * ($widget_width + $gutter) - $gutter;
+  padding: $gutter;
+  margin: 0 auto;
 }
 
 .widget {
