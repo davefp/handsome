@@ -33,6 +33,15 @@ body {
   }
 }
 
+@for $i from 1 through 4 {
+  .w#{$i} {
+    width: ($widget_width * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);
+  }
+  .h#{$i} {
+    height: ($widget_height * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);
+  }
+}
+
 .number_widget {
   background-color: $color_4;
   .number {
@@ -43,11 +52,14 @@ body {
 .image_widget {
   background-color: #444;
 }
-@for $i from 1 through 4 {
-  .w#{$i} {
-    width: ($widget_width * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);
+
+.list_widget {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
   }
-  .h#{$i} {
-    height: ($widget_height * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);
+  li {
+    font-size: 1.3em;
+    line-height: 1.2em;
   }
 }
