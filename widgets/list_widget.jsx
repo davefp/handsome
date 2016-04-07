@@ -8,7 +8,7 @@ var ListWidget = React.createClass({
   render: function() {
     var list = this.state.list.map(function (item) {
       return (
-        <li>
+        <li key={item}>
           {item}
         </li>
       );

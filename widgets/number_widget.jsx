@@ -2,7 +2,7 @@ var NumberWidget = React.createClass({
   mixins: [Widget],
 
   getDefaultProps: function() {
-    return {formatString: '0.00a'};
+    return {formatString: '0.[00]a'};
   },
 
   getInitialState: function() {
