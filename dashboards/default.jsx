@@ -1,4 +1,4 @@
-React.render(
+ReactDOM.render(
   <div id="dashboard">
     <NumberWidget name="reddit_score" title="Score" />
     <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />

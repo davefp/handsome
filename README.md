@@ -48,12 +48,12 @@ Create a new JSX file under the dashboards directory:
 
 $ touch dashboards/my_dashboard.jsx
 
-The skeleton of a dashboard is a simple React.render call:
+The skeleton of a dashboard is a simple ReactDOM.render call:
 
 ```
 // my_dashboard.jsx
 
-React.render(
+ReactDOM.render(
   <div>
     //Widgets go here!
   </div>,
@@ -70,7 +70,7 @@ Add a text widget to your dashboard:
 ```
 // my_dashboard.jsx
 
-React.render(
+ReactDOM.render(
   <div>
     <TextWidget name="reddit_headline" title="Top Reddit Headline" />
   </div>,

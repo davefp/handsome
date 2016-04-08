@@ -1,7 +1,8 @@
 <html>
   <head>
     <title><%= dashboard %> - A Handsome Dashboard</title>
-    <script src="http://fb.me/react-0.12.2.js"></script>
+    <script src="https://fb.me/react-15.0.0.js"></script>
+    <script src="https://fb.me/react-dom-15.0.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.3.2/packery.pkgd.min.js"></script>
     <script src="assets/widgets.js"></script>
@@ -9,7 +10,8 @@
 
     <link rel="stylesheet" href="assets/default.css"></link>
   </head>
-  <body id="content">
+  <body>
+    <div id="content"></div>
     <script src="assets/<%= dashboard %>.js"></script>
   </body>
 </html>
