@@ -1,11 +1,14 @@
-var ListWidget = React.createClass({
-  mixins: [Widget],
+import React from 'react';
+import BaseWidget from './widget.jsx'
 
-  getInitialState: function() {
-    return {title: "init", list: ["init"]};
-  },
+export default class ListWidget extends BaseWidget {
 
-  render: function() {
+  constructor() {
+    super();
+    this.state = {title: "init", list: ["init"]};
+  }
+
+  render() {
     var list = this.state.list.map(function (item) {
       return (
         <li key={item}>
@@ -22,4 +25,4 @@ var ListWidget = React.createClass({
       </div>
     );
   }
-});
+}
