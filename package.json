@@ -1,0 +1,25 @@
+{
+  "name": "handsome",
+  "version": "0.1.0",
+  "description": "A handsome dashboard framework written in ruby and js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davefp/handsome.git"
+  },
+  "keywords": [
+    "dashboard"
+  ],
+  "author": "David Underwood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davefp/handsome/issues"
+  },
+  "homepage": "https://github.com/davefp/handsome",
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  }
+}
