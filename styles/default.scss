@@ -5,16 +5,17 @@ $gutter: 10px;
 
 $max_columns: 4;
 
-$color_1: #00A1CB;
-$color_2: #61AE24;
-$color_3: #D70060;
-$color_4: #F18D05;
+$bg_color: #616161;
+$color_1:  #00A1CB;
+$color_2:  #61AE24;
+$color_3:  #D70060;
+$color_4:  #F18D05;
 
 body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
-  background-color: #616161;
+  background-color: $bg_color;
 }
 
 #dashboard {
