@@ -3,8 +3,8 @@ import BaseWidget from './widget.jsx'
 
 export default class TextWidget extends BaseWidget {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {title: "init", text: "init"};
   }
 

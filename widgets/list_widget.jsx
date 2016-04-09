@@ -3,8 +3,8 @@ import BaseWidget from './widget.jsx'
 
 export default class ListWidget extends BaseWidget {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {title: "init", list: ["init"]};
   }
 

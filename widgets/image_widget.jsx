@@ -3,16 +3,18 @@ import BaseWidget from './widget.jsx'
 
 export default class ImageWidget extends BaseWidget {
 
-  constructor() {
-    super();
-    this.state =  {image_url: "http://placekitten.com/g/208/258"};
+  updateWidget() {
+    // no-op since this is a static image
+    return;
   }
 
   render() {
     return (
       <div className={"image_widget widget w" + this.props.width + " h" + this.props.height}>
-        <img src={this.state.image_url} />
+        <img src={this.props.image_url} />
       </div>
     );
   }
 }
+
+ImageWidget.defaultProps.image_url = "http://placehold.it/208x258"

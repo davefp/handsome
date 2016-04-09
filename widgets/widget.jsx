@@ -3,8 +3,8 @@ import React from 'react';
 
 export default class BaseWidget extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.timeout_id = null;
   }
 
@@ -30,7 +30,7 @@ export default class BaseWidget extends React.Component {
       this.timeout_id = null;
     }
     if(interval < 1000) { interval = 1000; }
-    this.timeout_id = setTimeout(this.updateWidget, interval)
+    this.timeout_id = setTimeout(() => this.updateWidget(), interval)
   }
 
   componentDidMount() {

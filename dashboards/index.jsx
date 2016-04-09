@@ -12,9 +12,9 @@ ReactDOM.render(
     <NumberWidget name="reddit_score" title="Score" />
     <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />
     <ListWidget name="top_subreddits" title="Most Popular Subreddits" height="2" />
-    <ImageWidget name="kitten" title="Kitten" />
+    <ImageWidget name="kitten" title="Kitten" image_url="http://placekitten.com/g/208/258" />
   </div>,
   document.getElementById('content')
 );
 
-var grid = new Packery("#dashboard", {itemSelector: ".widget", gutter: 10});
+new Packery("#dashboard", {itemSelector: ".widget", gutter: 10});

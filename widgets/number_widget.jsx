@@ -4,8 +4,8 @@ import Numeral from 'numeral';
 
 export default class NumberWidget extends BaseWidget {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {title: "init", number: 0};
   }
 
