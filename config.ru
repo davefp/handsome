@@ -13,5 +13,4 @@ map '/assets' do
   run HandsomeAssets.environment HandsomeServer.settings.root
 end
 
-
 run HandsomeServer

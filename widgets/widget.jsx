@@ -1,15 +1,14 @@
-var Widget = {
+import $ from 'jquery';
+import React from 'react';
 
-  timeout_id: null,
+export default class BaseWidget extends React.Component {
 
-  getDefaultProps: function() {
-    return {
-      width: 1,
-      height: 1
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.timeout_id = null;
+  }
 
-  updateWidget: function() {
+  updateWidget() {
     $.ajax({
       url: 'widgets/' + this.props.name + '.json',
       dataType: 'json',
@@ -22,19 +21,24 @@ var Widget = {
         this.reschedule(1000);
       }.bind(this)
     });
-  },
+  }
 
-  reschedule: function(interval) {
+  reschedule(interval) {
     console.log(interval)
     if(this.timeout_id) {
       clearTimeout(this.timeout_id)
       this.timeout_id = null;
     }
     if(interval < 1000) { interval = 1000; }
-    this.timeout_id = setTimeout(this.updateWidget, interval)
-  },
+    this.timeout_id = setTimeout(() => this.updateWidget(), interval)
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.updateWidget();
   }
+}
+
+BaseWidget.defaultProps = {
+ width: 1,
+ height: 1
 };
