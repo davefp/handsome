@@ -10,33 +10,37 @@ Handsome is a cousin to [Dashing](http://dashing.io), which is also a ruby-based
 
 # Getting Started
 
+## Prerequisites
+
+You will need *ruby* and *npm* installed before you can do anything.
+
+You'll also need *redis* installed. [Read the quickstart guide to get going quickly](http://redis.io/topics/quickstart).
+
+## Installation and setup
+
 Clone this repository (or fork it and then clone).
 
 Install ruby dependencies:
 
 `$ bundle`
 
-You'll also need redis installed. [Read the quickstart guide to get going quickly](http://redis.io/topics/quickstart).
+Install js dependencies:
+
+`$ npm install`
 
 Start your Handsome server:
 
 `$ foreman start`
 
-Now visit http://localhost:9292 to see the default dashboard.
+Wait a short while for the ruby server to start and webpack to build your js bundle.
+
+Now visit http://localhost:5000 to see the default dashboard.
 
 Hooray! You're running Handsome.
 
 ## A bit more detail
 
-For simplicity's sake, Handsome provides a `Procfile` to use in development that starts and manages the ruby server and redis with a single command.
-
-The ruby server is a modular Sinatra app, so you can start it on its own with a simple:
-
-`$ rackup`
-
-Similarly, you can get redis going by running:
-
-`$ redis-server`
+For simplicity's sake, Handsome provides a `Procfile` to use in development that starts and starts the ruby server, webpack, and redis with a single command.
 
 **Note**: Handsome only supports redis' default configuration right now, so it can't connect to a remote instance or a local server running on a port other than 6379. This will be fixed soon!
 
@@ -78,7 +82,7 @@ ReactDOM.render(
 );
 ```
 
-That's it! You can now navigate to http://localhost:9292/my_dashboard and see your dashboard and widgets.
+That's it! You can now navigate to http://localhost:5000/my_dashboard and see your dashboard and widgets.
 
 # Adding Data
 
@@ -104,32 +108,35 @@ end
 
 Create a JSX file for your widget:
 
-`touch widgets/my_widget.jsx`
+`$ touch widgets/my_widget.jsx`
 
-It should be a [React](https://facebook.github.io/react/) component that includes the `PollingWidget` mixin:
+It should be an ES6 class that extends the BaseWidget like so:
 
 ```
-var MyWidget = React.createClass({
-  mixins: [PollingWidget],
+import React from 'react';
+import BaseWidget from './widget.jsx'
 
-  getInitialState: function() {
-    return {title: "init", text: "init"};
-  },
+export default class TextWidget extends BaseWidget {
 
-  render: function() {
+  constructor(props) {
+    super(props);
+    this.state = {title: "init", text: "init"};
+  }
+
+  render() {
     return (
-      <div className="textWidget widget">
+      <div className={"text_widget widget w" + this.props.width + " h" + this.props.height}>
         <h1>{this.props.title}</h1>
         <h2>{this.state.text}</h2>
       </div>
     );
   }
-});
+}
 ```
 
-At a bare minimum it should also implement the `render` and `getInitialState` methods so that it can be drawn and have some default data to be shown while waiting for the server.
+At a bare minimum it should also implement the `render` method and set some initial state in the constructor so that it can be drawn and have some default data to be shown while waiting for the server.
 
-## How does Handsome differ from Dashing?
+# How does Handsome differ from Dashing?
 
 Handsome's front-end is powered by [React](https://facebook.github.io/react/), while Dashing's is powered by [Batman.js](http://batmanjs.org/)
 
