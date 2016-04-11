@@ -7,6 +7,8 @@ import ListWidget from '../widgets/list_widget.jsx';
 import NumberWidget from '../widgets/number_widget.jsx';
 import TextWidget from '../widgets/text_widget.jsx';
 
+require("../styles/default.scss");
+
 ReactDOM.render(
   <div id="dashboard">
     <NumberWidget name="reddit_score" title="Score" />
