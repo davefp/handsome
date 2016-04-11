@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var redis = require('redis');
+var moment = require('moment');
+
 const path = require('path');
 
 app.get('/', function (req, res) {
@@ -13,7 +15,16 @@ app.get('/widgets/:widget.json', function(req, res) {
     if(err) {
       res.json({'error': err});
     } else {
-      res.send(reply);
+      var reply_json = JSON.parse(reply);
+      var next_time = moment(reply_json.next_time);
+      delete reply_json.next_time;
+      var now = moment();
+      if (now.isBefore(next_time)) {
+        reply_json.updates_in_millis = moment.duration(now.diff(next_time)).asMilliseconds();
+      } else {
+        reply_json.updates_in_millis = 5000;
+      }
+      res.json(reply_json);
     }
   })
   client.quit();

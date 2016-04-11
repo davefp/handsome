@@ -33,6 +33,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "jquery": "^2.2.3",
+    "moment": "^2.12.0",
     "numeral": "^1.5.3",
     "packery": "^2.0.0",
     "react": "^15.0.1",
