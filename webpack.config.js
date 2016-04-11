@@ -3,10 +3,10 @@ const path = require('path');
 const PATHS = {
   app: path.join(__dirname, 'dashboards'),
   build: path.join(__dirname, 'build'),
-  widgets: path.join(__dirname, 'widgets')
+  widgets: path.join(__dirname, 'widgets'),
+  styles: path.join(__dirname, 'styles')
 };
 
-console.log(PATHS.app);
 module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -32,6 +32,11 @@ module.exports = {
         // Parse only app files! Without this it will go through entire project.
         // In addition to being slow, that will most likely result in an error.
         include: [PATHS.app, PATHS.widgets]
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
+        include: PATHS.styles
       }
 
     ]
