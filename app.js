@@ -36,3 +36,6 @@ app.listen(3000, function () {
 
 // Serve our bundle
 app.use("/assets", express.static('build'));
+
+// load our jobs
+require(__dirname + '/jobs.js');
