@@ -24,7 +24,6 @@ export default class BaseWidget extends React.Component {
   }
 
   reschedule(interval) {
-    console.log(interval)
     if(this.timeout_id) {
       clearTimeout(this.timeout_id)
       this.timeout_id = null;

@@ -7,10 +7,8 @@ module.exports = function() {
       if (!error && response.statusCode == 200) {
         var json = JSON.parse(body);
         for (var i = 0; i < json["data"]["children"].length; i++) {
-          var child = json["data"]["children"][i]
-          console.log(i + " " + child);
+          var child = json["data"]["children"][i];
           if(child["data"]["stickied"]) {
-            console.log("stickied");
             continue;
           }
           fulfill({
