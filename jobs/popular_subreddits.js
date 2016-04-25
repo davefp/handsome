@@ -8,7 +8,7 @@ module.exports = function() {
         var json = JSON.parse(body);
         var subreddit_list = [];
         json['data']['children'].slice(0,19).forEach(function(item) {
-          subreddit_list.push(item);
+          subreddit_list.push(item['data']['display_name']);
         });
         fulfill({top_subreddits: {list: subreddit_list}});
       } else {
