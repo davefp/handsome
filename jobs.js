@@ -4,6 +4,7 @@ var moment = require('moment');
 var jobs = require('require-all')(__dirname + '/jobs');
 
 function update_widget(name, data, next_time) {
+  console.log("updating widget: " + name);
   var client = redis.createClient();
   client.set(name, JSON.stringify({
     payload: data,
@@ -20,7 +21,7 @@ function start_recurring_job(job) {
   setInterval(function() {
     new Promise(job.promise).then(function(widget_data) {
       for (var widget in widget_data) {
-        update_widget(widget, widget_data[widget], moment().add(5, 'seconds'));
+        update_widget(widget, widget_data[widget], moment().add(job.interval, 'ms'));
       }
     });
   }, job.interval);

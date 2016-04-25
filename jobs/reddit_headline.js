@@ -2,7 +2,6 @@ var request = require("request")
 const url = "https://www.reddit.com/r/todayilearned.json?limit=5";
 
 exports.interval = 5000;
-
 exports.promise = function(fulfill, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {

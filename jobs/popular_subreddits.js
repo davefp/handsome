@@ -1,7 +1,7 @@
 var request = require("request")
 const url = "https://www.reddit.com/subreddits/popular.json";
 
-exports.interval = 5000;
+exports.interval = 300000;
 exports.promise = function(fulfill, reject) {
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
