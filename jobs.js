@@ -18,12 +18,12 @@ function update_widget(name, data, next_time) {
 
 function start_recurring_job(job) {
   setInterval(function() {
-    job().then(function(widget_data) {
+    new Promise(job.promise).then(function(widget_data) {
       for (var widget in widget_data) {
         update_widget(widget, widget_data[widget], moment().add(5, 'seconds'));
       }
     });
-  }, 5000);
+  }, job.interval);
 }
 
 for (var job in jobs) {
