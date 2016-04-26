@@ -17,14 +17,26 @@ function update_widget(name, data, next_time) {
   client.quit();
 }
 
+function reschedule(job) {
+  setTimeout(function() {start_recurring_job(job)}, job.interval)
+}
+
 function start_recurring_job(job) {
-  setInterval(function() {
-    new Promise(job.promise).then(function(widget_data) {
-      for (var widget in widget_data) {
-        update_widget(widget, widget_data[widget], moment().add(job.interval, 'ms'));
+    new Promise(job.promise)
+    .then(
+      function(widget_data) {
+        for (var widget in widget_data) {
+          update_widget(widget, widget_data[widget], moment().add(job.interval, 'ms'));
+        }
+        reschedule(job);
       }
+    )
+    .catch(
+      function(error) {
+        console.log(error);
+        reschedule(job)
+      };
     });
-  }, job.interval);
 }
 
 for (var job in jobs) {
