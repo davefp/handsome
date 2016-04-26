@@ -1,12 +1,11 @@
-var redis = require('redis');
+var redis = require('redis').createClient();
 var moment = require('moment');
 
 var jobs = require('require-all')(__dirname + '/jobs');
 
 function update_widget(name, data, next_time) {
   console.log("updating widget: " + name);
-  var client = redis.createClient();
-  client.set(name, JSON.stringify({
+  redis.set(name, JSON.stringify({
     payload: data,
     next_time: next_time
   }), function(err, res) {
@@ -14,7 +13,6 @@ function update_widget(name, data, next_time) {
       console.log(err);
     }
   });
-  client.quit();
 }
 
 function reschedule(job) {

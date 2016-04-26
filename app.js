@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var redis = require('redis');
+var redis = require('redis').createClient();
 var moment = require('moment');
 
 const path = require('path');
@@ -13,8 +13,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/widgets/:widget.json', function(req, res) {
-  var client = redis.createClient();
-  var widget_data = client.get(req.params.widget, function(err, reply) {
+  redis.get(req.params.widget, function(err, reply) {
     if(err) {
       res.json({'error': err});
     } else {
@@ -30,7 +29,6 @@ app.get('/widgets/:widget.json', function(req, res) {
       res.json(reply_json);
     }
   })
-  client.quit();
 });
 
 app.listen(app.get('port'), function () {
