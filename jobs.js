@@ -34,9 +34,9 @@ function start_recurring_job(job) {
     .catch(
       function(error) {
         console.log(error);
-        reschedule(job)
-      };
-    });
+        reschedule(job);
+      }
+    );
 }
 
 for (var job in jobs) {
