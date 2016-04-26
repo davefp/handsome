@@ -5,6 +5,9 @@ var moment = require('moment');
 
 const path = require('path');
 
+
+app.set('port', (process.env.PORT || 3000));
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/index.html'));
 });
@@ -30,8 +33,8 @@ app.get('/widgets/:widget.json', function(req, res) {
   client.quit();
 });
 
-app.listen(3000, function () {
-  console.log("Up and running on port 3000");
+app.listen(app.get('port'), function () {
+  console.log("Up and running on port " + app.get('port'));
 });
 
 // Serve our bundle
