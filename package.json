@@ -1,7 +1,7 @@
 {
   "name": "handsome",
   "version": "0.1.0",
-  "description": "A handsome dashboard framework written in ruby and js",
+  "description": "A handsome dashboard framework written in javascript",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
