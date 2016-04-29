@@ -2,17 +2,17 @@
 
 ## What is Handsome?
 
-Handsome is a dashboard framework written in ruby and [JSX](https://facebook.github.io/jsx/).
+Handsome is a dashboard framework written in javascript.
 
 It is currently a work-in-progress.
 
-Handsome is a cousin to [Dashing](http://dashing.io), which is also a ruby-based dashboard framework.
+Handsome is a cousin to [Dashing](http://dashing.io).
 
 # Getting Started
 
 ## Prerequisites
 
-You will need *ruby* and *npm* installed before you can do anything.
+You will need *node* and *npm* installed before you can do anything.
 
 You'll also need *redis* installed. [Read the quickstart guide to get going quickly](http://redis.io/topics/quickstart).
 
@@ -20,27 +20,27 @@ You'll also need *redis* installed. [Read the quickstart guide to get going quic
 
 Clone this repository (or fork it and then clone).
 
-Install ruby dependencies:
-
-`$ bundle`
-
-Install js dependencies:
+Install dependencies:
 
 `$ npm install`
 
+This will also build your js bundle and place it in the `build` directory.
+
+Start redis:
+
+`$ redis-server`
+
 Start your Handsome server:
 
-`$ foreman start`
+`$ npm start`
 
-Wait a short while for the ruby server to start and webpack to build your js bundle.
-
-Now visit http://localhost:5000 to see the default dashboard.
+Now visit <http://localhost:3000> to see the default dashboard.
 
 Hooray! You're running Handsome.
 
 ## A bit more detail
 
-For simplicity's sake, Handsome provides a `Procfile` to use in development that starts and starts the ruby server, webpack, and redis with a single command.
+Behind the scenes, Handsome runs a simple [Express](http://expressjs.com/) app to serve widget data and repeatedly schedule jobs to generate new widget data. The data is stored in redis.
 
 **Note**: Handsome only supports redis' default configuration right now, so it can't connect to a remote instance or a local server running on a port other than 6379. This will be fixed soon!
 
@@ -90,19 +90,38 @@ Your new dashboard is boring. It's got a widget, but there's no data going to it
 
 Create a new job file:
 
-`$ touch jobs/my_job.rb`
+`$ touch jobs/my_job.js`
 
-Handsome provides a helper for creating periodic jobs called `recurring_job`. It takes the name of the widget you want to update, the frequency of the job, and a block that returns a hash of data to pass to the widget.
+Jobs need to export the following:
+
+* An `interval`, which is the period between each run of the job in milliseconds
+* A `promise`, which is a function that takes two arguments: `fulfill` and `reject`. Call `fulfill` with the widget data on success or `reject` with an error message if the job fails.
+
+This function is used to create a [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 Here's an example to go with our new widget above that fetches the title of the top Reddit post every minute:
 
 ```
-recurring_job('reddit_headline', '1m') do
-  listing = JSON.parse(Net::HTTP.get(URI('https://www.reddit.com/r/all.json?limit=1')))
-  title = listing['data']['children'][0]['data']['title']
-  {text: title}
-end
+var request = require("request")
+const url = "https://www.reddit.com/r/all.json?limit=1";
+
+exports.interval = 60000;
+
+exports.promise = function(fulfill, reject) {
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      var json = JSON.parse(body);
+      fulfill({
+        reddit_headline: {text: json["data"]["children"][0]["data"]["title"]},
+        reddit_score: {number: json["data"]["children"][0]["data"]["score"]}
+      });
+    } else {
+      reject(error);
+    }
+  });
+};
 ```
+
 
 # Making Custom Widgets
 
@@ -139,5 +158,7 @@ At a bare minimum it should also implement the `render` method and set some init
 # How does Handsome differ from Dashing?
 
 Handsome's front-end is powered by [React](https://facebook.github.io/react/), while Dashing's is powered by [Batman.js](http://batmanjs.org/)
+
+Handsome's back-end is a node/express app, while Dashing runs Sinatra.
 
 Handsome uses a polling model to update dashboards, while Dashing streams data using [Server Sent Events](https://en.wikipedia.org/wiki/Server-sent_events).

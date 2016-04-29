@@ -1,15 +1,21 @@
 var express = require('express');
+var exphbs  = require('express-handlebars');
 var app = express();
 var redis = require('redis').createClient();
 var moment = require('moment');
 
 const path = require('path');
 
-
+app.engine('hbs', exphbs({defaultLayout: 'index', extname: '.hbs', layoutsDir: 'views/'}));
+app.set('view engine', 'hbs');
 app.set('port', (process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'views/index.html'));
+  res.render('index', {name: 'index'});
+});
+
+app.get('/:dashboard', function(req, res) {
+  res.render('index', {name: req.params.dashboard, layout: false});
 });
 
 app.get('/widgets/:widget.json', function(req, res) {
