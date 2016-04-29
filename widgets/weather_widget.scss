@@ -1,0 +1,12 @@
+@import "../styles/variables";
+
+.weather_widget {
+  background-color: $color_3;
+  .temperature {
+    font-size: 500%;
+    text-align: center;
+  }
+  .condition {
+    font-size: 200%;
+  }
+}

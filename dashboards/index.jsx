@@ -5,6 +5,7 @@ import ImageWidget from 'widgets/image_widget';
 import ListWidget from 'widgets/list_widget';
 import NumberWidget from 'widgets/number_widget';
 import TextWidget from 'widgets/text_widget';
+import WeatherWidget from 'widgets/weather_widget';
 
 import "styles/default.scss";
 
@@ -14,6 +15,7 @@ ReactDOM.render(
     <TextWidget name="reddit_headline" title="Top Reddit Post" width="2" />
     <ListWidget name="top_subreddits" title="Most Popular Subreddits" height="2" />
     <ImageWidget name="kitten" title="Kitten" image_url="http://placekitten.com/g/208/258" />
+    <WeatherWidget name="ottawa_weather" title="Ottawa" />
   </div>,
   document.getElementById('content')
 );
