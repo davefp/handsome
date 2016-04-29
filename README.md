@@ -82,7 +82,7 @@ ReactDOM.render(
 );
 ```
 
-That's it! You can now navigate to http://localhost:5000/my_dashboard and see your dashboard and widgets.
+That's it! You can now navigate to http://localhost:3000/my_dashboard and see your dashboard and widgets.
 
 # Adding Data
 
