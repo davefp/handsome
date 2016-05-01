@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "postinstall": "webpack --config ./webpack.config.js --progress --colors",
+    "postinstall": "webpack -p --progress --colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,5 +42,8 @@
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
+  },
+  "devDependencies": {
+    "webpack-dev-middleware": "^1.6.1"
   }
 }
