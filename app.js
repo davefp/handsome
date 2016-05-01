@@ -8,6 +8,7 @@ const path = require('path');
 
 app.engine('hbs', exphbs({defaultLayout: 'index', extname: '.hbs', layoutsDir: 'views/'}));
 app.set('view engine', 'hbs');
+
 app.set('port', (process.env.PORT || 3000));
 
 app.get('/', function (req, res) {
@@ -42,7 +43,20 @@ app.listen(app.get('port'), function () {
 });
 
 // Serve our bundle
-app.use("/assets", express.static('build'));
+if(process.env.NODE_ENV === 'production') {
+  // serve the contents of the build folder
+  app.use("/assets", express.static('build'));
+} else {
+  // serve using webpack middleware
+  var webpack = require('webpack');
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var config = require('./webpack.config');
+  var compiler = webpack(config);
+  app.use(webpackDevMiddleware(compiler, {
+     publicPath: '/assets/',
+     stats: {colors: true}
+  }));
+ }
 
 // load our jobs
 require(__dirname + '/jobs.js');

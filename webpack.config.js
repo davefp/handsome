@@ -15,8 +15,6 @@ var entry_paths = fs.readdirSync(PATHS.dashboards).reduce(function(map, filename
   map[path.basename(filename, '.jsx')] = path.join(PATHS.dashboards, filename);
   return map;
 }, {});
-// add the common libs
-entry_paths.common = ['jquery', 'react', 'react-dom', 'packery'];
 
 module.exports = {
   resolve: {
@@ -28,10 +26,7 @@ module.exports = {
     filename: '[name].dashboard.bundle.js'
   },
   plugins: [
-    new CommonsPlugin({
-      name: 'common',
-      filename: 'common.bundle.js'
-    })
+    new CommonsPlugin('common.bundle.js')
   ],
   module: {
     loaders: [

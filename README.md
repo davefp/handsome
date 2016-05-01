@@ -42,6 +42,8 @@ Hooray! You're running Handsome.
 
 Behind the scenes, Handsome runs a simple [Express](http://expressjs.com/) app to serve widget data and repeatedly schedule jobs to generate new widget data. The data is stored in redis.
 
+In development, the app will auto-generate and serve the client-side assets. Changing a source file will cause the relevant bundle to be regenerated on the fly.
+
 **Note**: Handsome only supports redis' default configuration right now, so it can't connect to a remote instance or a local server running on a port other than 6379. This will be fixed soon!
 
 # Adding your own dashboard
