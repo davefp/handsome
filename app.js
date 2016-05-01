@@ -29,7 +29,7 @@ app.get('/widgets/:widget.json', function(req, res) {
       delete reply_json.next_time;
       var now = moment();
       if (now.isBefore(next_time)) {
-        reply_json.updates_in_millis = moment.duration(now.diff(next_time)).asMilliseconds();
+        reply_json.updates_in_millis = moment.duration(next_time.diff(now)).asMilliseconds();
       } else {
         reply_json.updates_in_millis = 5000;
       }
