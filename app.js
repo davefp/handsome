@@ -1,8 +1,10 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
 var app = express();
-var redis = require('redis').createClient();
 var moment = require('moment');
+
+var config = require(__dirname + '/config.js');
+var redis = config.getRedisClient();
 
 const path = require('path');
 
