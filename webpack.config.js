@@ -1,7 +1,7 @@
 const path = require('path');
 var fs = require("fs");
 
-var CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin")
+var webpack = require("webpack");
 
 const PATHS = {
   dashboards: path.join(__dirname, 'dashboards'),
@@ -26,7 +26,8 @@ module.exports = {
     filename: '[name].dashboard.bundle.js'
   },
   plugins: [
-    new CommonsPlugin('common.bundle.js')
+    new webpack.optimize.CommonsChunkPlugin('common.bundle.js'),
+    new webpack.EnvironmentPlugin(["NODE_ENV"])
   ],
   module: {
     loaders: [
