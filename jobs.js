@@ -1,4 +1,6 @@
-var redis = require('redis').createClient();
+var config = require(__dirname + '/config.js');
+var redis = config.getRedisClient();
+
 var moment = require('moment');
 
 var jobs = require('require-all')(__dirname + '/jobs');
