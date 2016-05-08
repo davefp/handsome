@@ -1,8 +1,8 @@
 import React from 'react';
-import BaseWidget from './widget.jsx'
+import BaseWidget from './widget.jsx';
 import Numeral from 'numeral';
 
-import './number_widget.scss'
+import './number_widget.scss';
 
 export default class NumberWidget extends BaseWidget {
 
