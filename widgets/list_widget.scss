@@ -1,0 +1,12 @@
+@import '../styles/variables';
+
+.widget.list_widget {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    font-size: 1.3em;
+    line-height: 1.2em;
+  }
+}

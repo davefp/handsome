@@ -1,6 +1,8 @@
 import React from 'react';
-import BaseWidget from './widget.jsx'
+import BaseWidget from './widget.jsx';
 import Numeral from 'numeral';
+
+import './number_widget.scss';
 
 export default class NumberWidget extends BaseWidget {
 
@@ -19,4 +21,4 @@ export default class NumberWidget extends BaseWidget {
   }
 }
 
-NumberWidget.defaultProps = {formatString: '0.[00]a'};
+NumberWidget.defaultProps.formatString = '0.[00]a';

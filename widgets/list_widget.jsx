@@ -1,5 +1,7 @@
 import React from 'react';
-import BaseWidget from './widget.jsx'
+import BaseWidget from './widget.jsx';
+
+import './list_widget.scss';
 
 export default class ListWidget extends BaseWidget {
 

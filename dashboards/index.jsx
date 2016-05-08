@@ -7,7 +7,7 @@ import ListWidget from '../widgets/list_widget';
 import NumberWidget from '../widgets/number_widget';
 import TextWidget from '../widgets/text_widget';
 
-require("../styles/default.scss");
+import "../styles/default.scss";
 
 ReactDOM.render(
   <div id="dashboard">

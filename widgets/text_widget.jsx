@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseWidget from './widget.jsx'
+import BaseWidget from './widget.jsx';
 
 export default class TextWidget extends BaseWidget {
 

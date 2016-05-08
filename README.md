@@ -125,17 +125,20 @@ exports.promise = function(fulfill, reject) {
 
 # Making Custom Widgets
 
-Create a JSX file for your widget:
+Create JSX and Sass files for your widget:
 
 `$ touch widgets/my_widget.jsx`
+`$ touch widgets/my_widget.scss`
 
-It should be an ES6 class that extends the BaseWidget like so:
+The widget itself should be an ES6 class that extends the BaseWidget like so:
 
 ```
 import React from 'react';
-import BaseWidget from './widget.jsx'
+import BaseWidget from './widget.jsx';
 
-export default class TextWidget extends BaseWidget {
+import './my_widget.scss';
+
+export default class MyWidget extends BaseWidget {
 
   constructor(props) {
     super(props);
@@ -144,7 +147,7 @@ export default class TextWidget extends BaseWidget {
 
   render() {
     return (
-      <div className={"text_widget widget w" + this.props.width + " h" + this.props.height}>
+      <div className={"my_widget widget w" + this.props.width + " h" + this.props.height}>
         <h1>{this.props.title}</h1>
         <h2>{this.state.text}</h2>
       </div>
@@ -154,6 +157,19 @@ export default class TextWidget extends BaseWidget {
 ```
 
 At a bare minimum it should also implement the `render` method and set some initial state in the constructor so that it can be drawn and have some default data to be shown while waiting for the server.
+
+The Sass file should import the variables defined in `styles/_variables.scss` and all styles should be scoped to the widget in question:
+
+```
+@import '../styles/variables';
+
+.widget.my_widget {
+  background-color: $color_4;
+  .h2 {
+    font-size: 500%;
+  }
+}
+```
 
 # How does Handsome differ from Dashing?
 

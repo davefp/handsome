@@ -1,15 +1,4 @@
-$widget_width: 250px;
-$widget_height: 300px;
-$widget_padding: 21px;
-$gutter: 10px;
-
-$max_columns: 4;
-
-$bg_color: #616161;
-$color_1:  #00A1CB;
-$color_2:  #61AE24;
-$color_3:  #D70060;
-$color_4:  #F18D05;
+@import "variables";
 
 body {
   padding: 0;
@@ -42,27 +31,5 @@ body {
   }
   .h#{$i} {
     height: ($widget_height * $i) + ($gutter * ($i - 1)) - ($widget_padding * 2);
-  }
-}
-
-.number_widget {
-  background-color: $color_4;
-  .number {
-    font-size: 500%;
-  }
-}
-
-.image_widget {
-  background-color: #444;
-}
-
-.list_widget {
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  li {
-    font-size: 1.3em;
-    line-height: 1.2em;
   }
 }
