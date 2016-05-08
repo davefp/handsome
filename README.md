@@ -127,8 +127,10 @@ exports.promise = function(fulfill, reject) {
 
 Create JSX and Sass files for your widget:
 
-`$ touch widgets/my_widget.jsx`
-`$ touch widgets/my_widget.scss`
+```
+$ touch widgets/my_widget.jsx
+$ touch widgets/my_widget.scss
+```
 
 The widget itself should be an ES6 class that extends the BaseWidget like so:
 
