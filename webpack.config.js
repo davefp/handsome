@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass'],
-        include: PATHS.styles
+        include: [PATHS.styles, PATHS.widgets]
       }
 
     ]

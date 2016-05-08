@@ -1,0 +1,8 @@
+@import "../styles/variables";
+
+.widget.number_widget {
+  background-color: $color_4;
+  .number {
+    font-size: 500%;
+  }
+}
