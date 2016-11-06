@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/adilfulara/handsome.svg?branch=test-setup)](https://travis-ci.org/adilfulara/handsome)
+[![Coverage Status](https://coveralls.io/repos/github/adilfulara/handsome/badge.svg?branch=test-setup)](https://coveralls.io/github/adilfulara/handsome?branch=test-setup)
 # Handsome Dashboard Framework
 
 ## What is Handsome?

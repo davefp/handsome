@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node app.js",
     "postinstall": "webpack -p --progress --colors",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ignore-styles --require test/setup.js --recursive",
+    "cover": "./node_modules/.bin/nyc --reporter=lcov --extension .jsx npm run test",
+    "cover:report": "npm run cover && ./node_modules/.bin/nyc report",
+    "coveralls": "npm run cover:report && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
@@ -44,6 +47,14 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "enzyme": "^2.3.0",
+    "ignore-styles": "^2.0.0",
+    "jsdom": "^9.2.1",
+    "mocha": "^2.5.3",
+    "nyc": "^6.4.4",
+    "react-addons-test-utils": "^15.1.0",
     "webpack-dev-middleware": "^1.6.1"
   }
 }
