@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/davefp/handsome.svg?branch=test-setup)](https://travis-ci.org/davefp/handsome)
-[![Coverage Status](https://coveralls.io/repos/github/davefp/handsome/badge.svg?branch=test-setup)](https://coveralls.io/github/davefp/handsome?branch=test-setup)
+[![Build Status](https://travis-ci.org/davefp/handsome.svg?branch=master)](https://travis-ci.org/davefp/handsome)
+[![Coverage Status](https://coveralls.io/repos/github/davefp/handsome/badge.svg?branch=master)](https://coveralls.io/github/davefp/handsome?branch=master)
 # Handsome Dashboard Framework
 
 ## What is Handsome?
