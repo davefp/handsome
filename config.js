@@ -1,15 +1,12 @@
-var redis = require('redis');
+var Cacheman = require('cacheman');
 
-var config = {
-  redis_server_host: process.env.REDIS_SERVER_HOST || "127.0.0.1",
-  redis_server_port: process.env.REDIS_SERVER_PORT || 6379,
-  redis_server_password: process.env.REDIS_SERVER_PASSWORD || undefined
+var storage_options = {
+  engine: 'redis',
+  port: process.env.REDIS_SERVER_PORT || 6379,
+  host: process.env.REDIS_SERVER_HOST || "127.0.0.1",
+  password: process.env.REDIS_SERVER_PASSWORD || undefined
 };
 
-exports.getRedisClient = function() {
-  var options = {
-      password: config.redis_server_password
-  };
-
-  return redis.createClient(config.redis_server_port, config.redis_server_host, options);
+exports.getStorage = function() {
+  return new Cacheman('handsome', storage_options)
 };

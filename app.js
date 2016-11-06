@@ -4,7 +4,7 @@ var app = express();
 var moment = require('moment');
 
 var config = require(__dirname + '/config.js');
-var redis = config.getRedisClient();
+var storage = config.getStorage();
 
 const path = require('path');
 
@@ -22,7 +22,7 @@ app.get('/:dashboard', function(req, res) {
 });
 
 app.get('/widgets/:widget.json', function(req, res) {
-  redis.get(req.params.widget, function(err, reply) {
+  storage.get(req.params.widget, function(err, reply) {
     if(err) {
       res.json({'error': err});
     } else {
