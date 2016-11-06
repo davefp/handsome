@@ -52,7 +52,7 @@ The default dashboard is a bit boring, so let's add a new one.
 
 Create a new JSX file under the dashboards directory:
 
-$ touch dashboards/my_dashboard.jsx
+`$ touch dashboards/my_dashboard.jsx`
 
 The skeleton of a dashboard is a simple ReactDOM.render call:
 
