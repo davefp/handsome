@@ -1,13 +1,12 @@
-import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Packery from 'packery';
-import ImageWidget from '../widgets/image_widget';
-import ListWidget from '../widgets/list_widget';
-import NumberWidget from '../widgets/number_widget';
-import TextWidget from '../widgets/text_widget';
+import ImageWidget from 'widgets/image_widget';
+import ListWidget from 'widgets/list_widget';
+import NumberWidget from 'widgets/number_widget';
+import TextWidget from 'widgets/text_widget';
 
-import "../styles/default.scss";
+import "styles/default.scss";
 
 ReactDOM.render(
   <div id="dashboard">

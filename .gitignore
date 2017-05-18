@@ -2,3 +2,7 @@ dump.rdb
 node_modules/
 build/
 npm-debug.log
+
+# Local configuration
+.vscode/
+.env
