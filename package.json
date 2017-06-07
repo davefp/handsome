@@ -29,6 +29,8 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "cacheman": "^2.2.1",
+    "cacheman-redis": "^1.1.2",
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "express-handlebars": "^3.0.0",

@@ -1,5 +1,5 @@
 var config = require(__dirname + '/config.js');
-var redis = config.getRedisClient();
+var storage = config.getStorage();
 
 var moment = require('moment');
 
@@ -7,7 +7,7 @@ var jobs = require('require-all')(__dirname + '/jobs');
 
 function update_widget(name, data, next_time) {
   console.log("updating widget: " + name);
-  redis.set(name, JSON.stringify({
+  storage.set(name, JSON.stringify({
     payload: data,
     next_time: next_time
   }), function(err, res) {

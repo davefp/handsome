@@ -175,6 +175,30 @@ The Sass file should import the variables defined in `styles/_variables.scss` an
 }
 ```
 
+# Using a different storage engine
+
+Handsome stores widget data in redis by default, but it uses [cacheman](https://github.com/cayasso/cacheman) as an interface.
+
+This means that you can use any storage engine that cacheman supports. [Here are the available storage engines](https://github.com/cayasso/cacheman#supported-engines)
+
+To switch engines, install the corresponding cacheman package (e.g. `cacheman-mongo`) for MongoDB and then update the storage options in `config.js` to use the new engine:
+
+```
+var Cacheman = require('cacheman');
+
+var storage_options = {
+  engine: 'mongo',
+  port: 9999,
+  host: '127.0.0.1',
+  username: 'user',
+  ...
+};
+
+exports.getStorage = function() {
+  return new Cacheman('handsome', storage_options)
+};
+```
+
 # How does Handsome differ from Dashing?
 
 Handsome's front-end is powered by [React](https://facebook.github.io/react/), while Dashing's is powered by [Batman.js](http://batmanjs.org/)
