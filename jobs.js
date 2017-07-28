@@ -1,4 +1,5 @@
-var config = require(__dirname + '/config.js');
+/* eslint-disable no-console, no-unused-vars */
+var config = require('./config.js');
 var storage = config.getStorage();
 
 var moment = require('moment');

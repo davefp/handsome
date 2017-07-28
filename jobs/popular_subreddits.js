@@ -1,9 +1,9 @@
-var request = require("request")
-const url = "https://www.reddit.com/subreddits/popular.json";
+import request from 'request'
+const url = 'https://www.reddit.com/subreddits/popular.json';
 
-exports.interval = 300000;
-exports.promise = function(fulfill, reject) {
-  request(url, function (error, response, body) {
+export const interval = 300000;
+export const promise = (fulfill, reject) => {
+  request(url, (error, response, body) => {
     if (!error && response.statusCode == 200) {
       var json = JSON.parse(body);
       var subreddit_list = json['data']['children'].slice(0,19).map(function(item) {

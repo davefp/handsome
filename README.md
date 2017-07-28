@@ -14,7 +14,7 @@ Handsome is a cousin to [Dashing](http://dashing.io).
 
 ## Prerequisites
 
-You will need *node* and *npm* installed before you can do anything.
+You will need *node*, *npm* and (recommended for dependency management) [*yarn*](https://yarnpkg.com/en/) installed before you can do anything.
 
 You'll also need *redis* installed. [Read the quickstart guide to get going quickly](http://redis.io/topics/quickstart).
 
@@ -24,7 +24,7 @@ Clone this repository (or fork it and then clone).
 
 Install dependencies:
 
-`$ npm install`
+`$ yarn install`
 
 This will also build your js bundle and place it in the `build` directory.
 
@@ -34,7 +34,7 @@ Start redis:
 
 Start your Handsome server:
 
-`$ npm start`
+`$ yarn start`
 
 Now visit <http://localhost:3000> to see the default dashboard.
 
@@ -104,19 +104,18 @@ This function is used to create a [Promise](https://developer.mozilla.org/en/doc
 Here's an example to go with our new widget above that fetches the title of the top Reddit post every minute:
 
 ```
-var request = require("request")
-const url = "https://www.reddit.com/r/all.json?limit=1";
+import request from "request"
+const url = "https://www.reddit.com/subreddits/popular.json";
 
-exports.interval = 60000;
-
-exports.promise = function(fulfill, reject) {
-  request(url, function (error, response, body) {
+export const interval = 300000;
+export const promise = (fulfill, reject) => {
+  request(url, (error, response, body) => {
     if (!error && response.statusCode == 200) {
       var json = JSON.parse(body);
-      fulfill({
-        reddit_headline: {text: json["data"]["children"][0]["data"]["title"]},
-        reddit_score: {number: json["data"]["children"][0]["data"]["score"]}
+      var subreddit_list = json['data']['children'].slice(0,19).map(function(item) {
+        return item['data']['display_name'];
       });
+      fulfill({top_subreddits: {list: subreddit_list}});
     } else {
       reject(error);
     }
