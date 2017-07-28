@@ -231,12 +231,6 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-axios@^0.15.2:
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
-  dependencies:
-    follow-redirects "1.0.0"
-
 babel-cli@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.24.1.tgz#207cd705bba61489b2ea41b5312341cf6aca2283"
@@ -986,6 +980,26 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
+cacheman-memory@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/cacheman-memory/-/cacheman-memory-1.0.2.tgz#38c79b80f012b103bfaa8346d6ed74730a7ede9c"
+  dependencies:
+    lru-cache "~2.7.x"
+
+cacheman-redis@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/cacheman-redis/-/cacheman-redis-1.1.2.tgz#d54454dd492803ff3382ad929fcb8693ea394cb6"
+  dependencies:
+    parse-redis-url "0.0.2"
+    redis ">= 2.4.x"
+
+cacheman@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/cacheman/-/cacheman-2.2.1.tgz#3510c0def12429d61b780128ff18f9d284bb02b8"
+  dependencies:
+    cacheman-memory "^1.0.2"
+    ms "^0.7.1"
+
 caching-transform@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/caching-transform/-/caching-transform-1.0.1.tgz#6dbdb2f20f8d8fbce79f3e94e9d1742dcdf5c0a1"
@@ -1640,10 +1654,6 @@ domutils@1.5.1, domutils@^1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
-dotenv@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
-
 double-ended-queue@^2.1.0-0:
   version "2.1.0-0"
   resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
@@ -1828,10 +1838,6 @@ escope@^3.6.0:
     es6-weak-map "^2.0.1"
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
-
-eslint-config-react@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/eslint-config-react/-/eslint-config-react-1.1.7.tgz#a0918d0fc47d0e9bd161a47308021da85d2585b3"
 
 eslint-plugin-react@^7.0.1:
   version "7.0.1"
@@ -2113,12 +2119,6 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
-follow-redirects@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
-  dependencies:
-    debug "^2.2.0"
-
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -2250,15 +2250,6 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
-
-github-api@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/github-api/-/github-api-3.0.0.tgz#2832f98d0d3a83f1485e2db32c9259e4b9c40a75"
-  dependencies:
-    axios "^0.15.2"
-    debug "^2.2.0"
-    js-base64 "^2.1.9"
-    utf8 "^2.1.1"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -3049,7 +3040,7 @@ lodash.words@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
-lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3078,7 +3069,7 @@ loud-rejection@^1.0.0:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
 
-lru-cache@2:
+lru-cache@2, lru-cache@~2.7.x:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
@@ -3246,7 +3237,7 @@ moment@^2.12.0:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
-ms@0.7.1:
+ms@0.7.1, ms@^0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
 
@@ -3615,6 +3606,10 @@ parse-json@^2.2.0:
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
   dependencies:
     error-ex "^1.2.0"
+
+parse-redis-url@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/parse-redis-url/-/parse-redis-url-0.0.2.tgz#13c92a0abbe6f2512006a8c49de6cb7b8dd4b277"
 
 parse5@^1.5.1:
   version "1.5.1"
@@ -4161,7 +4156,7 @@ redis-parser@^2.5.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
 
-redis@^2.6.0-1:
+"redis@>= 2.4.x", redis@^2.6.0-1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/redis/-/redis-2.7.1.tgz#7d56f7875b98b20410b71539f1d878ed58ebf46a"
   dependencies:
@@ -4877,10 +4872,6 @@ user-home@^2.0.0:
   dependencies:
     os-homedir "^1.0.0"
 
-utf8@^2.1.1:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/utf8/-/utf8-2.1.2.tgz#1fa0d9270e9be850d9b05027f63519bf46457d96"
-
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -4960,12 +4951,6 @@ webpack-dev-middleware@^1.6.1:
     mime "^1.3.4"
     path-is-absolute "^1.0.0"
     range-parser "^1.0.3"
-
-webpack-merge@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.1.0.tgz#6ad72223b3e0b837e531e4597c199f909361511e"
-  dependencies:
-    lodash "^4.17.4"
 
 webpack-sources@^0.2.3:
   version "0.2.3"

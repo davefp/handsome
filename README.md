@@ -14,7 +14,7 @@ Handsome is a cousin to [Dashing](http://dashing.io).
 
 ## Prerequisites
 
-You will need *node* and the [*yarn*](https://yarnpkg.com/en/) package manager installed before you can do anything.
+You will need *node*, *npm* and (recommended for dependency management) [*yarn*](https://yarnpkg.com/en/) installed before you can do anything.
 
 You'll also need *redis* installed. [Read the quickstart guide to get going quickly](http://redis.io/topics/quickstart).
 
