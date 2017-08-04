@@ -26,9 +26,11 @@ app.get('/widgets/:widget.json', function(req, res) {
   storage.get(req.params.widget, function(err, reply) {
     if(err) {
       res.json({'error': err});
+    } else if(reply === null) {
+      console.log(req.params.widget, "no data")
     } else {
-      console.log(req.params.widget, JSON.parse(reply))
       var reply_json = JSON.parse(reply);
+      console.log(req.params.widget, reply_json)
       try {
         var next_time = moment(reply_json.next_time);
         delete reply_json.next_time;
