@@ -1,0 +1,18 @@
+version: '3.2'
+
+networks:
+  handsome_backend:
+
+services:
+  handsome_ui:
+    build: .
+    networks:
+      - handsome_backend
+    environment:
+      - REDIS_SERVER_HOST=redis
+    ports:
+      - "3000:3000"
+  redis:
+    image: redis
+    networks:
+      - handsome_backend
