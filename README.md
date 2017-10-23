@@ -26,7 +26,7 @@ This will help you to start with handsome, no redis or npm/yarn requirement, you
 
 Build service:
 
-`$ docker-compose build .`
+`$ docker-compose build`
 
 Launch the app
 
