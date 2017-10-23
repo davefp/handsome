@@ -20,6 +20,60 @@ You'll also need *redis* installed. [Read the quickstart guide to get going quic
 
 ## Installation and setup
 
+### Easy setup with Docker-compose
+
+This will help you to start with handsome, no redis or npm/yarn requirement, you just need docker-compose & docker.
+
+Build service:
+
+`$ docker-compose build`
+
+Launch the app
+
+`$ docker-compose up`
+
+Now visit <http://localhost:3000> to see the default dashboard!
+
+Hooray! You're running Handsome in docker!!
+
+### docker
+
+To run the standalone image, you need to have a redis server running.
+
+Start redis:
+
+`$ redis-server --protected-mode no`
+
+`--protected-mode` is disabled to allow container connection. This is NOT recommend for production use.
+
+Now you can build & run the docker image:
+
+`$ docker build -t handsome .`
+
+```
+$ docker run -d -p 3000:3000 \
+    -e REDIS_SERVER_HOST=<redis_ip_address> \
+    -v <jobs_folder>:/opt/app/jobs/ \
+    -v <dashboards_folder>:/opt/app/dashboards/ \
+    handsome
+```
+
+ with :
+  * <redis_ip_address> : the ip address of a running redis (you can use `ip a` to show your ip)
+  * <jobs_folder> : folder on host where handsome can find the jobs
+  * <dashboards_folder> : folder on host where handsome can find the dashboards
+
+Example:
+```
+$ docker run -d -p 3000:3000 \
+    -e REDIS_SERVER_HOST=192.168.0.1 \
+    -v /home/y0an/handsome/jobs/:/opt/app/jobs/ \
+    -v /home/y0an/handsome/dashboards/:/opt/app/dashboards/ \
+    handsome
+```
+
+### Standard without docker
+
 Clone this repository (or fork it and then clone).
 
 Install dependencies:
